@@ -1,0 +1,12 @@
+{
+  "name": "naviq",
+  "version": "1.0.0",
+  "description": "Naviq - Navigator in the Fog of the Future",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

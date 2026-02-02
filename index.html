@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naviq — Navigator in the Fog of the Future</title>
+    <meta name="description"
+        content="Naviq: An immersive career guidance platform combining gamification, simulation, and AI-powered insights to navigate your professional future.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Naviq — Navigator in the Fog of the Future">
+    <meta property="og:description"
+        content="Transform career uncertainty into clarity through immersive digital experiences.">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-nav.css">
+    <link rel="stylesheet" href="styles-extended.css">
+    <link rel="stylesheet" href="styles-road.css">
+</head>
+
+<body>
+    <!-- Animated Background Cards -->
+    <div class="background-cards" id="bg-cards"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor">
+        <div class="cursor-inner"></div>
+    </div>
+
+    <!-- Navigation Menu (Lusion style) -->
+    <nav class="main-nav">
+        <div class="nav-logo">NAVIQ</div>
+        <div class="nav-menu">
+            <a href="#hero" class="nav-link active" data-section="0">Главная</a>
+            <a href="#chaos" class="nav-link" data-section="1">Проблема</a>
+            <a href="#guidance" class="nav-link" data-section="2">Решение</a>
+            <a href="#userpath" class="nav-link" data-section="3">Путь</a>
+            <a href="#scale" class="nav-link" data-section="5">Рынок</a>
+            <a href="#business" class="nav-link" data-section="6">Модель</a>
+            <a href="#logic" class="nav-link" data-section="7">Сравнение</a>
+            <a href="#roadmap" class="nav-link" data-section="8">План</a>
+            <a href="#team" class="nav-link" data-section="9">Команда</a>
+            <a href="#final" class="nav-link" data-section="10">Итог</a>
+        </div>
+    </nav>
+
+    <!-- Section Indicators (side dots) -->
+    <div class="section-indicators">
+        <div class="indicator active" data-section="0"></div>
+        <div class="indicator" data-section="1"></div>
+        <div class="indicator" data-section="2"></div>
+        <div class="indicator" data-section="3"></div>
+        <div class="indicator" data-section="5"></div>
+        <div class="indicator" data-section="6"></div>
+        <div class="indicator" data-section="7"></div>
+        <div class="indicator" data-section="8"></div>
+        <div class="indicator" data-section="9"></div>
+        <div class="indicator" data-section="10"></div>
+    </div>
+
+    <!-- WebGL Canvas -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Content Overlay -->
+    <div class="content-wrapper">
+
+        <!-- Section 1: Hero - The Core -->
+        <section id="hero" class="section" data-section="0">
+            <div class="container">
+                <h1 class="hero-title">
+                    <span class="line">Навигатор</span>
+                    <span class="line">В <span class="gradient-text">Будущее</span></span>
+                </h1>
+                <p class="hero-subtitle">Карьерная ясность в мире бесконечных возможностей</p>
+                <div class="scroll-indicator">
+                    <span>Исследовать</span>
+                    <div class="scroll-line"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Pain - The Chaos -->
+        <section id="chaos" class="section" data-section="1">
+            <div class="container">
+                <h2 class="section-title">Хаос неопределённости</h2>
+                <p class="section-subtitle">Почему текущая система сломана</p>
+                <div class="pain-points">
+                    <div class="pain-item" data-chaos="school">
+                        <h3>🎓 Для студентов</h3>
+                        <p>«Слепой» выбор и потерянное время</p>
+                        <ul class="pain-details">
+                            <li><strong>80% выбирают вслепую:</strong> по совету родственников → потеря 4 лет жизни</li>
+                            <li><strong>Миллионы сумов</strong> на бесполезные контракты</li>
+                            <li><strong>Пустое резюме:</strong> «невидимка» для рынка без опыта</li>
+                            <li>Диплом без практики = <strong>0 ценности</strong> для топ-компаний</li>
+                        </ul>
+                    </div>
+                    <div class="pain-item" data-chaos="business">
+                        <h3>🏢 Для бизнеса</h3>
+                        <p>Найм «кота в мешке» и HR-выгорание</p>
+                        <ul class="pain-details">
+                            <li><strong>Кадровый дефицит 2026:</strong> критическая нехватка профи</li>
+                            <li><strong>Текучесть 40-60%:</strong> новички уходят в первые 2 месяца</li>
+                            <li><strong>Дорогая адаптация:</strong> 90 дней работы в убыток (Onboarding)</li>
+                            <li>Нет ресурсов «изобретать велосипед» для стажировок</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Solution - The Solution -->
+        <section id="guidance" class="section" data-section="2">
+            <div class="container">
+                <h2 class="section-title">Решение Naviq</h2>
+                <p class="section-subtitle">Фабрика готовых кадров «Под ключ»</p>
+                <div class="solution-blocks">
+                    <div class="solution-card">
+                        <div class="solution-icon">🏭</div>
+                        <h3>Академия симуляций</h3>
+                        <p>Мы берем на себя роль архитектора вашей образовательной среды</p>
+                        <ul class="solution-benefits">
+                            <li><strong>Аутсорс контента:</strong> создаем «Путь героя» за вас</li>
+                            <li><strong>Упаковка процессов:</strong> софт, кейсы и культура компании в онлайн-стажировке
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">🎯</div>
+                        <h3>Прогнозируемый найм</h3>
+                        <p>Вместо 500 пустых резюме — топ-20 доказавших навыки</p>
+                        <ul class="solution-benefits">
+                            <li><strong>Leaderboard:</strong> прозрачное портфолио с уровнями и отзывами</li>
+                            <li><strong>Time-to-hire:</strong> закрытие вакансии за дни, а не месяцы</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">⚡</div>
+                        <h3>Готовый сотрудник</h3>
+                        <p>Кандидат изучил софт и процессы еще до оффера</p>
+                        <ul class="solution-benefits">
+                            <li><strong>Быстрая адаптация:</strong> 2 недели вместо 3 месяцев (90 дней)</li>
+                            <li><strong>Высокая лояльность:</strong> психологическая привязанность к бренду (+50%)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: User Paths (Horizontal Tabs) -->
+        <section id="userpath" class="section" data-section="3">
+            <div class="container">
+                <h2 class="section-title">Ваш Путь в Naviq</h2>
+                <p class="section-subtitle">Выберите свою роль и узнайте маршрут успеха</p>
+
+                <div class="path-tabs">
+                    <button class="path-tab-btn active" onclick="switchPath('school')">Школьник</button>
+                    <button class="path-tab-btn" onclick="switchPath('student')">Студент</button>
+                    <button class="path-tab-btn" onclick="switchPath('company')">Компания</button>
+                </div>
+
+                <div class="path-content-wrapper">
+                    <!-- Path: SCHOOL -->
+                    <div id="path-school" class="path-track active">
+                        <div class="horizontal-scroll-container">
+                            <!-- Step 1 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">01</span>
+                                <span class="h-step-icon">🎡</span>
+                                <h3>Discovery</h3>
+                                <p class="step-main">Вход в систему</p>
+                                <p class="h-step-desc">Хайп брендов + страх неопределенности («Кем я стану?») + желание
+                                    выделиться.</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Регистрация</li>
+                                        <li>Знакомство с AI-наставником</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">02</span>
+                                <span class="h-step-icon">🧠</span>
+                                <h3>AI-Assessment</h3>
+                                <p class="step-main">Умная профориентация</p>
+                                <p class="h-step-desc">ИИ дает 3–5 микро-кейсов (логика, креатив, цифры). Никаких
+                                    скучных тестов.</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Анализ склада ума</li>
+                                        <li>Сравнение с топ-профи</li>
+                                        <li>Присвоение уровня</li>
+                                    </ul>
+                                </div>
+                                <div class="h-step-outcome"><strong>Итог:</strong> Персональная «Лестница карьеры»</div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">03</span>
+                                <span class="h-step-icon">🎮</span>
+                                <h3>Simulation & Learning</h3>
+                                <p class="step-main">Обучение действием</p>
+                                <p class="h-step-desc">Ты стажер. Твоя задача — реальный кейс (например, анализ
+                                    конкурентов).</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Гайд от ИИ</li>
+                                        <li>Выполнение задачи</li>
+                                        <li>Мгновенная обратная связь</li>
+                                    </ul>
+                                </div>
+                                <div class="h-step-outcome"><strong>Прокачка:</strong> Hard Skills + XP</div>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">04</span>
+                                <span class="h-step-icon">🏆</span>
+                                <h3>Leaderboard</h3>
+                                <p class="step-main">Социальное признание</p>
+                                <p class="h-step-desc">Рейтинг внутри школы/лицея. Статусность и привилегии от
+                                    партнеров.</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Топ учеников</li>
+                                        <li>Награды в холле школы</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Step 5 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">05</span>
+                                <span class="h-step-icon">🎫</span>
+                                <h3>Conversion</h3>
+                                <p class="step-main">Золотой пропуск</p>
+                                <p class="h-step-desc">Прошел все уровни? Получи приоритетный статус при поступлении или
+                                    найме.</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Priority Candidate</li>
+                                        <li>Бонусы при поступлении в вуз</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Path: STUDENT -->
+                    <div id="path-student" class="path-track">
+                        <div class="horizontal-scroll-container">
+                            <!-- Step 1 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">01</span>
+                                <span class="h-step-icon">🔎</span>
+                                <h3>Re-assessment</h3>
+                                <p class="step-main">Вход и Аудит</p>
+                                <p class="h-step-desc">ИИ анализирует вуз, но дает свободу. Учишься на финансах, но
+                                    талант в Data Science? Пробуй!</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Анализ профиля</li>
+                                        <li>Рекомендация стажировок</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">02</span>
+                                <span class="h-step-icon">⚔️</span>
+                                <h3>Skill Validation</h3>
+                                <p class="step-main">Проверка боем</p>
+                                <p class="h-step-desc">Подтверди то, что знаешь. Экспресс-тесты для пропуска базы.
+                                    Задачи уровня Real-World.</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Сложные кейсы</li>
+                                        <li>Анонимные задачи компаний</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">03</span>
+                                <span class="h-step-icon">📂</span>
+                                <h3>Live Portfolio</h3>
+                                <p class="step-main">Цифровой профиль</p>
+                                <p class="h-step-desc">Не «знаю Excel», а «решил 15 задач по финмоделям с точностью
+                                    98%».</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Автогенерация портфолио</li>
+                                        <li>Матрица навыков (SQL 75%...)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">04</span>
+                                <span class="h-step-icon">🤝</span>
+                                <h3>The Match</h3>
+                                <p class="step-main">Коннект с работодателем</p>
+                                <p class="h-step-desc">Набрал проходной балл? Твой профиль загорается у HR-директора.
+                                </p>
+                                <div class="h-step-outcome"><strong>Итог:</strong> Прямой оффер без рассылки резюме.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Path: COMPANY -->
+                    <div id="path-company" class="path-track">
+                        <div class="horizontal-scroll-container">
+                            <!-- Step 1 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">01</span>
+                                <span class="h-step-icon">🏢</span>
+                                <h3>Onboarding</h3>
+                                <p class="step-main">Выбор стратегии</p>
+                                <p class="h-step-desc">Путь А: Готовый шаблон (Fast Track). Путь Б: Уникальная академия
+                                    бренда (Custom).</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Запуск за 10 минут</li>
+                                        <li>Или глубокий консалтинг</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">02</span>
+                                <span class="h-step-icon">🌪️</span>
+                                <h3>Talent Funnel</h3>
+                                <p class="step-main">Воронка талантов</p>
+                                <p class="h-step-desc">SEO в топы рекомендаций. Active Hunting через Flash Challenges.
+                                </p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Таргетинг по профилю</li>
+                                        <li>Ажиотаж вокруг бренда</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">03</span>
+                                <span class="h-step-icon">📊</span>
+                                <h3>Analytics</h3>
+                                <p class="step-main">Работа с Дашбордом</p>
+                                <p class="h-step-desc">Живая аналитика. «Покажи студентов 3 курса с Excel > 90%».</p>
+                                <div class="h-step-details">
+                                    <ul>
+                                        <li>Фильтрация талантов</li>
+                                        <li>Маркеры лояльности</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="h-step-card">
+                                <span class="h-step-number">04</span>
+                                <span class="h-step-icon">✍️</span>
+                                <h3>The Hire</h3>
+                                <p class="step-main">Конверсия в найм</p>
+                                <p class="h-step-desc">ИИ вердикт: «Кандидат готов на 85%». Оффер в один клик.</p>
+                                <div class="h-step-outcome"><strong>Итог:</strong> Найм готового сотрудника за дни.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function switchPath(role) {
+                        // 1. Buttons
+                        document.querySelectorAll('.path-tab-btn').forEach(b => b.classList.remove('active'));
+                        event.target.classList.add('active');
+
+                        // 2. Content
+                        document.querySelectorAll('.path-track').forEach(t => t.classList.remove('active'));
+                        document.getElementById('path-' + role).classList.add('active');
+                    }
+                </script>
+            </div>
+        </section>
+
+        <!-- Section 6: Market Size (Uzbekistan) -->
+        <section id="scale" class="section" data-section="5">
+            <div class="container">
+                <h2 class="section-title">Размер рынка</h2>
+                <p class="section-subtitle">Узбекистан, фокус на Ташкент</p>
+
+                <div class="market-data">
+                    <div class="data-point" data-segment="tam">
+                        <span class="data-label">TAM (Весь Узбекистан)</span>
+                        <span class="data-value">$120M</span>
+                        <p class="data-desc">2.5M студентов × $48/год</p>
+                    </div>
+                    <div class="data-point" data-segment="sam">
+                        <span class="data-label">SAM (Ташкент)</span>
+                        <span class="data-value">$45M</span>
+                        <p class="data-desc">750K студентов × $60/год</p>
+                    </div>
+                    <div class="data-point" data-segment="som">
+                        <span class="data-label">SOM (Год 1)</span>
+                        <span class="data-value">$2.5M</span>
+                        <p class="data-desc">5% проникновение рынка</p>
+                    </div>
+                </div>
+
+                <div class="market-impact">
+                    <h3 class="impact-title">Влияние на рынок труда Узбекистана</h3>
+                    <p class="impact-intro">
+                        Если Naviq масштабируется, рынок ждет три фундаментальных изменения:
+                    </p>
+
+                    <div class="impact-cards">
+                        <div class="impact-card">
+                            <div class="impact-icon">🎓</div>
+                            <h4>Отрезвление профориентации</h4>
+                            <p>
+                                Снизится количество «случайных» студентов. В вузы начнут поступать люди с базовыми
+                                практическими навыками,
+                                полученными через ваши симуляции. Это означает, что традиционная система профориентации,
+                                основаная на советах
+                                родственников и абстрактных тестах, будет вытеснена реальным опытом.
+                            </p>
+                            <div class="impact-details">
+                                <p><strong>Результат:</strong> Высшие учебные заведения получают мотивированных
+                                    студентов, которые уже знают,
+                                    чего хотят от профессии.</p>
+                            </div>
+                        </div>
+
+                        <div class="impact-card">
+                            <div class="impact-icon">⚡</div>
+                            <h4>Сокращение времени найма (Time-to-hire)</h4>
+                            <p>
+                                Компании смогут закрывать вакансии не за месяцы, а за дни, просто выбирая лучших из топа
+                                лидеров (Leaderboard)
+                                на платформе. HR-отделы перестанут тратить недели на просмотр резюме и первичные
+                                собеседования — вся информация
+                                о навыках и достижениях кандидата уже в системе.
+                            </p>
+                            <div class="impact-details">
+                                <p><strong>Экономия:</strong> Снижение затрат на рекрутинг на 60-70%</p>
+                                <p><strong>Скорость:</strong> От 3 месяцев поиска до 3 дней выбора из готовых кандидатов
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="impact-card">
+                            <div class="impact-icon">💎</div>
+                            <h4>Рост лояльности сотрудников</h4>
+                            <p>
+                                Сотрудник, который прошел «путь героя» в симуляции компании, психологически уже привязан
+                                к бренду.
+                                Он потратил недели на изучение корпоративной культуры, процессов и ценностей компании —
+                                это создаёт
+                                глубокую эмоциональную связь.
+                            </p>
+                            <div class="impact-details">
+                                <p><strong>Снижение текучести:</strong> Вероятность того, что новый сотрудник уволится
+                                    через 2 месяца,
+                                    падает на 40-60%</p>
+                                <p><strong>Долгосрочность:</strong> Средний срок работы в компании увеличивается с 1.5
+                                    до 3+ лет</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Business Model Canvas (Creative Rebuild) -->
+        <section id="business" class="section" data-section="6">
+            <div class="bmc-section-container">
+                <h2 class="section-title">Business Model</h2>
+                <p class="section-subtitle">Стратегическая карта Naviq</p>
+
+                <div class="bmc-grid">
+                    <!-- 1. Key Partners -->
+                    <div class="bmc-card cell-partners">
+                        <h4><span class="bmc-icon">🔗</span> Ключевые Партнёры</h4>
+                        <ul>
+                            <li>Компании-наниматели (симуляции)</li>
+                            <li>Университеты и частные школы</li>
+                            <li>B2B-партнёры (EdTech)</li>
+                            <li>Маркетинговые партнёры</li>
+                        </ul>
+                    </div>
+
+                    <!-- 2. Key Activities -->
+                    <div class="bmc-card cell-activities">
+                        <h4><span class="bmc-icon">⚙️</span> Ключевые Активности</h4>
+                        <ul>
+                            <li>Разработка платформы</li>
+                            <li>Создание контента</li>
+                            <li>B2B продажи</li>
+                            <li>Автоматизация процессов</li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. Key Resources -->
+                    <div class="bmc-card cell-resources">
+                        <h4><span class="bmc-icon">🔋</span> Ключевые Ресурсы</h4>
+                        <ul>
+                            <li>IT Платформа</li>
+                            <li>Контент-студия</li>
+                            <li>База талантов (Data)</li>
+                        </ul>
+                        <div class="strong-note">"Данные — новая нефть"</div>
+                    </div>
+
+                    <!-- 4. Value Proposition -->
+                    <div class="bmc-card cell-value">
+                        <h4><span class="bmc-icon">💎</span> Ценностное Предложение</h4>
+                        <ul>
+                            <li><strong>Школьникам:</strong> Осознанный выбор.</li>
+                            <li><strong>Студентам:</strong> Реальный опыт и оффер.</li>
+                            <li><strong>Бизнесу:</strong> Готовые кадры (Onboarding -70%).</li>
+                        </ul>
+                        <div class="strong-note" style="color:var(--color-accent-light)">Девиз: Образование → Практика →
+                            Найм</div>
+                    </div>
+
+                    <!-- 5. Customer Relationships -->
+                    <div class="bmc-card cell-relationships">
+                        <h4><span class="bmc-icon">❤️</span> Отношения с Клиентами</h4>
+                        <ul>
+                            <li>Геймификация</li>
+                            <li>Сообщество</li>
+                            <li>Персональная поддержка (B2B)</li>
+                        </ul>
+                    </div>
+
+                    <!-- 6. Channels -->
+                    <div class="bmc-card cell-channels">
+                        <h4><span class="bmc-icon">📢</span> Каналы Сбыта</h4>
+                        <ul>
+                            <li>Вузы и школы</li>
+                            <li>Digital Маркетинг</li>
+                            <li>HR-конференции</li>
+                        </ul>
+                    </div>
+
+                    <!-- 7. Customer Segments -->
+                    <div class="bmc-card cell-segments">
+                        <h4><span class="bmc-icon">👥</span> Сегменты Клиентов</h4>
+                        <ul>
+                            <li><strong>B2C:</strong> Школьники, Студенты.</li>
+                            <li><strong>B2B:</strong> HR-директора, EdTech компании.</li>
+                        </ul>
+                        <div class="strong-note" style="color:#facc15">Приоритет: B2B Tech</div>
+                    </div>
+
+                    <!-- 8. Cost Structure -->
+                    <div class="bmc-card cell-cost">
+                        <h4><span class="bmc-icon">📉</span> Структура Издержек</h4>
+                        <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+                            <ul>
+                                <li>R&D (Разработка)</li>
+                                <li>Создание контента</li>
+                            </ul>
+                            <ul>
+                                <li>Маркетинг (CAC)</li>
+                                <li>Серверная инфраструктура</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 9. Revenue Streams -->
+                    <div class="bmc-card cell-revenue">
+                        <h4><span class="bmc-icon">💰</span> Потоки Доходов</h4>
+                        <div class="revenue-split">
+                            <div class="rev-block">
+                                <h5>B2C (Студенты)</h5>
+                                <ul>
+                                    <li>Подписка ($5-15/мес)</li>
+                                    <li>Сертификация</li>
+                                </ul>
+                            </div>
+                            <div class="rev-block">
+                                <h5>B2B (Бизнес)</h5>
+                                <ul>
+                                    <li>Академии (Плата за Запуск)</li>
+                                    <li>SaaS Подписка</li>
+                                    <li>Комиссия за найм</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Competitive Analysis -->
+        <section id="logic" class="section" data-section="7">
+            <div class="container">
+                <h2 class="section-title">Конкурентный анализ</h2>
+                <div class="comparison-grid">
+                    <div class="competitor-card">
+                        <h4>HH.uz / Olx.uz</h4>
+                        <ul>
+                            <li class="no">Только вакансии</li>
+                            <li class="no">Нет подготовки</li>
+                            <li class="no">Для опытных</li>
+                        </ul>
+                    </div>
+                    <div class="competitor-card naviq-highlight">
+                        <h4>Naviq</h4>
+                        <ul>
+                            <li class="yes">Геймификация + практика</li>
+                            <li class="yes">AI-карьерный трек</li>
+                            <li class="yes">С 9 класса до работы</li>
+                            <li class="yes">B2B аналитика</li>
+                        </ul>
+                    </div>
+                    <div class="competitor-card">
+                        <h4>Традиционное обучение</h4>
+                        <ul>
+                            <li class="no">Дорого ($500+)</li>
+                            <li class="no">Долго (6+ мес)</li>
+                            <li class="no">Без гарантий работы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Go-To-Market & Roadmap -->
+        <section id="roadmap" class="section" data-section="8">
+            <div class="container">
+                <h2 class="section-title">Стратегия запуска</h2>
+                <p class="section-subtitle">От пилота до масштабирования по СНГ</p>
+
+                <div class="roadmap-timeline">
+                    <div class="timeline-item" data-phase="q1">
+                        <div class="timeline-quarter">Q1 2026</div>
+                        <h3>MVP & Pilot</h3>
+                        <ul>
+                            <li>Запуск в 5 школах Ташкента</li>
+                            <li>1000 активных пользователей</li>
+                            <li>2 партнера B2B</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item" data-phase="q2">
+                        <div class="timeline-quarter">Q2-Q3 2026</div>
+                        <h3>Масштабирование</h3>
+                        <ul>
+                            <li>Расширение по Узбекистану</li>
+                            <li>10K+ пользователей</li>
+                            <li>10 корпоративных клиентов</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item" data-phase="q4">
+                        <div class="timeline-quarter">Q4 2026</div>
+                        <h3>Регион СНГ</h3>
+                        <ul>
+                            <li>Казахстан, Азербайджан</li>
+                            <li>50K+ пользователей</li>
+                            <li>$500K ARR</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="risk-analysis">
+                    <h3 class="risk-title">Зоны риска (что может помешать)</h3>
+
+                    <div class="risk-cards">
+                        <div class="risk-card">
+                            <div class="risk-level medium">⚠️ 0.5 балла</div>
+                            <h4>Консерватизм родителей</h4>
+                            <p class="risk-description">
+                                В Узбекистане всё еще верят в «бумажный диплом». Для многих родителей высшее образование
+                                — это не про навыки,
+                                а про статус и традицию. Вам придется доказывать родителям, что онлайн-стажировка в
+                                Naviq ценнее,
+                                чем просто корочка из университета.
+                            </p>
+                            <div class="risk-mitigation">
+                                <h5>Как мы решаем:</h5>
+                                <ul>
+                                    <li><strong>Кейсы успеха:</strong> показывать истории студентов, получивших работу
+                                        через Naviq</li>
+                                    <li><strong>Сертификаты:</strong> выдавать официальные сертификаты от
+                                        компаний-партнёров</li>
+                                    <li><strong>Работа с вузами:</strong> интеграция Naviq в программы университетов как
+                                        обязательная практика</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="risk-card">
+                            <div class="risk-level medium">⚠️ 0.5 балла</div>
+                            <h4>Сложность создания контента</h4>
+                            <p class="risk-description">
+                                Чтобы симуляция была качественной, компании должны активно участвовать в ее создании.
+                                Это требует времени их сотрудников и вовлеченности руководства. Если симуляции будут
+                                скучными
+                                или слишком легкими, молодежь быстро уйдет — gaming generation требует высокого
+                                качества.
+                            </p>
+                            <div class="risk-mitigation">
+                                <h5>Как мы решаем:</h5>
+                                <ul>
+                                    <li><strong>Готовые шаблоны:</strong> библиотека типовых симуляций для быстрого
+                                        старта</li>
+                                    <li><strong>Геймдизайнеры в штате:</strong> профессионалы помогают компаниям
+                                        создавать увлекательный контент</li>
+                                    <li><strong>Белый лейбл:</strong> компании могут брендировать готовые симуляции под
+                                        себя</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="launch-recommendation">
+                    <h3 class="recommendation-title">💡 Совет для старта</h3>
+                    <div class="recommendation-content">
+                        <p>
+                            <strong>Начните с IT-компаний и банковского сектора Ташкента.</strong> Там самая высокая
+                            текучесть кадров
+                            (40-60% в первые 6 месяцев) и самые большие бюджеты на обучение ($500K+ в год на крупный
+                            банк).
+                        </p>
+                        <div class="target-companies">
+                            <h4>Целевые компании для пилота:</h4>
+                            <ul>
+                                <li><strong>IT:</strong> Uzinfocom, EPAM, Andersen, Platonus</li>
+                                <li><strong>Банки:</strong> Kapitalbank, Uzum Bank, TBC Bank</li>
+                                <li><strong>Телеком:</strong> Ucell, Beeline, UMS</li>
+                            </ul>
+                        </div>
+                        <p class="recommendation-result">
+                            <strong>Результат:</strong> Если 2 из этих компаний станут амбассадорами Naviq, остальной
+                            рынок пойдёт следом
+                            (эффект FOMO — fear of missing out на таланты).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: The Team -->
+        <section id="team" class="section" data-section="9">
+            <div class="container">
+                <h2 class="section-title">Команда</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">👨‍💼</div>
+                        <h3>CEO / Founder</h3>
+                        <p class="member-name">Имя Фамилия</p>
+                        <p class="member-exp">• Ex-Google, 10+ лет в EdTech<br>• MBA Stanford</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">👨‍💻</div>
+                        <h3>CTO</h3>
+                        <p class="member-name">Имя Фамилия</p>
+                        <p class="member-exp">• Ex-Yandex, AI/ML Lead<br>• 15+ лет разработки</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">👩‍🎨</div>
+                        <h3>CPO</h3>
+                        <p class="member-name">Имя Фамилия</p>
+                        <p class="member-exp">• Ex-Duolingo Product<br>• UX gamification expert</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">👔</div>
+                        <h3>Head of Sales</h3>
+                        <p class="member-name">Имя Фамилия</p>
+                        <p class="member-exp">• Ex-B2B SaaS, $2M ARR<br>• Локальная экспертиза</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 11: Call to Action -->
+        <section id="final" class="section" data-section="10">
+            <div class="container">
+                <h2 class="section-title-large">Готовы навигировать<br>будущее вместе?</h2>
+                <div class="cta-buttons">
+                    <a href="#investor" class="cta-btn cta-investor" id="investor-btn">
+                        <span>Инвесторам</span>
+                        <div class="btn-distortion"></div>
+                    </a>
+                    <a href="#partner" class="cta-btn cta-partner" id="partner-btn">
+                        <span>Партнёрам</span>
+                        <div class="btn-distortion"></div>
+                    </a>
+                </div>
+                <div class="footer-info">
+                    <p>Naviq © 2026 — Трансформация карьерного открытия</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Application Scripts -->
+    <script src="utils/background.js"></script>
+    <script src="utils/navigation.js"></script>
+    <script type="module" src="utils/cursor.js"></script>
+    <script type="module" src="utils/scroll.js"></script>
+    <script type="module" src="utils/particles.js"></script>
+    <script type="module" src="scenes/hero.js"></script>
+    <script type="module" src="scenes/chaos.js"></script>
+    <script type="module" src="scenes/guidance.js"></script>
+    <script type="module" src="scenes/scale.js"></script>
+    <script type="module" src="scenes/business.js"></script>
+    <script type="module" src="scenes/roadmap.js"></script>
+    <script type="module" src="scenes/team.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
