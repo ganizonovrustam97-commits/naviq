@@ -12,8 +12,7 @@
             // Реальные изображения карточек
             this.images = [
                 { src: 'assets/card8.jpg', type: 'offer' },
-                { src: 'assets/card9.jpg', type: 'certificate' },
-                { src: 'assets/mascot-guy.jpg', type: 'business' }
+                { src: 'assets/card9.jpg', type: 'certificate' }
             ];
 
             this.init();
